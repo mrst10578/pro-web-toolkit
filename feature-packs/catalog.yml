@@ -28,11 +28,11 @@ packs:
     status: draft
     primary: vercel-ai-sdk
   rag:
-    status: planned
-    primary: undecided
+    status: draft
+    primary: supabase-postgres-pgvector
   pdf:
     status: draft
-    primary: react-pdf
+    primary: routed-by-job
   scraping:
     status: draft
     primary: crawlee
@@ -40,8 +40,9 @@ packs:
     status: draft
     primary: tiptap
   background_jobs:
-    status: planned
-    primary: undecided
+    status: draft
+    primary: inngest
+    alternative: trigger-dev
   realtime:
     status: draft
     primary: supabase-realtime
