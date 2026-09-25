@@ -30,19 +30,19 @@ const requiredPackFiles = [
 ];
 
 const draftPacks = [
-  "auth",
-  "database",
-  "storage",
-  "email",
-  "payments",
-  "analytics",
-  "monitoring",
-  "rtl-persian"
+  { dir: "auth", key: "auth" },
+  { dir: "database", key: "database" },
+  { dir: "storage", key: "storage" },
+  { dir: "email", key: "email" },
+  { dir: "payments", key: "payments" },
+  { dir: "analytics", key: "analytics" },
+  { dir: "monitoring", key: "monitoring" },
+  { dir: "rtl-persian", key: "rtl_persian" }
 ];
 
 for (const pack of draftPacks) {
   for (const file of requiredPackFiles) {
-    required.push(`feature-packs/${pack}/${file}`);
+    required.push(`feature-packs/${pack.dir}/${file}`);
   }
 }
 
@@ -63,9 +63,9 @@ for (const pack of ["auth", "database", "storage", "email", "payments", "analyti
 }
 
 for (const pack of draftPacks) {
-  const expected = `  ${pack}:\n    status: draft`;
+  const expected = `  ${pack.key}:\n    status: draft`;
   if (!packCatalog.includes(expected)) {
-    console.error(`Expected draft status for implemented pack: ${pack}`);
+    console.error(`Expected draft status for implemented pack: ${pack.key}`);
     process.exit(1);
   }
 }
