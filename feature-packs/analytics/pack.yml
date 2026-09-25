@@ -1,0 +1,30 @@
+name: analytics
+version: 0.1.0
+status: draft
+category: observability
+
+supported_starters:
+  - starter-web
+  - starter-content
+  - starter-saas-dashboard
+  - starter-ai
+  - starter-cms
+  - starter-learning
+  - starter-commerce
+
+primary: posthog
+alternative: none-by-default
+
+dependencies:
+  - project-specific
+
+env:
+  - NEXT_PUBLIC_POSTHOG_KEY
+  - NEXT_PUBLIC_POSTHOG_HOST
+
+data_changes: none
+
+verification:
+  - intended event is emitted once
+  - sensitive fields are excluded
+  - app still works if analytics is unavailable
