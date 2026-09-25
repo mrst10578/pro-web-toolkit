@@ -1,10 +1,10 @@
 packs:
   auth:
-    status: planned
+    status: draft
     primary: supabase-auth
     alternative: better-auth
   database:
-    status: planned
+    status: draft
     primary: supabase-postgres
   storage:
     status: planned
@@ -46,5 +46,5 @@ packs:
     status: planned
     primary: supabase-realtime
   rtl_persian:
-    status: planned
+    status: draft
     primary: custom-pack
