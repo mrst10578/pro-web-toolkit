@@ -1,0 +1,52 @@
+toolkit:
+  name: pro-web-toolkit
+  version: 0.1.0
+  status: foundation
+
+principles:
+  - composition_over_monolith
+  - one_primary_per_capability
+  - no_unused_dependencies
+  - ai_assisted_by_default
+  - verify_before_ship
+
+starters:
+  web:
+    repo: starter-web
+    status: planned
+  content:
+    repo: starter-content
+    status: planned
+  saas_dashboard:
+    repo: starter-saas-dashboard
+    status: planned
+  ai:
+    repo: starter-ai
+    status: planned
+  cms:
+    repo: starter-cms
+    status: planned
+  learning:
+    repo: starter-learning
+    status: planned
+  commerce:
+    repo: starter-commerce
+    status: optional
+
+defaults:
+  app_framework: nextjs
+  content_framework: astro
+  language: typescript
+  ui: shadcn_tailwind
+  database: supabase
+  auth: supabase_auth
+  cms: payload
+  search: meilisearch
+  email: resend_react_email
+  payments: stripe
+  analytics: posthog
+  monitoring: sentry
+  ai: vercel_ai_sdk
+  e2e: playwright
+  unit_test: vitest
+  ci: github_actions
