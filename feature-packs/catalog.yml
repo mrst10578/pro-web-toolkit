@@ -1,0 +1,50 @@
+packs:
+  auth:
+    status: planned
+    primary: supabase-auth
+    alternative: better-auth
+  database:
+    status: planned
+    primary: supabase-postgres
+  storage:
+    status: planned
+    primary: supabase-storage
+  email:
+    status: planned
+    primary: resend-react-email
+  payments:
+    status: planned
+    primary: stripe
+  analytics:
+    status: planned
+    primary: posthog
+  monitoring:
+    status: planned
+    primary: sentry
+  search:
+    status: planned
+    primary: meilisearch
+  ai:
+    status: planned
+    primary: vercel-ai-sdk
+  rag:
+    status: planned
+    primary: undecided
+  pdf:
+    status: planned
+    primary: react-pdf
+  scraping:
+    status: planned
+    primary: crawlee
+  rich_text_editor:
+    status: planned
+    primary: tiptap
+  background_jobs:
+    status: planned
+    primary: undecided
+  realtime:
+    status: planned
+    primary: supabase-realtime
+  rtl_persian:
+    status: planned
+    primary: custom-pack
