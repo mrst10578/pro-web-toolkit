@@ -1,0 +1,29 @@
+name: rtl-persian
+version: 0.1.0
+status: draft
+category: localization
+
+supported_starters:
+  - starter-web
+  - starter-content
+  - starter-saas-dashboard
+  - starter-ai
+  - starter-cms
+  - starter-learning
+  - starter-commerce
+
+primary: custom-pack
+alternative: none
+
+dependencies: []
+
+env: []
+
+data_changes: none
+
+verification:
+  - document lang and dir are correct
+  - mobile and desktop RTL layouts are correct
+  - mixed Persian and Latin strings render correctly
+  - forms and tables remain usable
+  - keyboard/focus order is correct
