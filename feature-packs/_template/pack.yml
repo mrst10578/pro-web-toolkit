@@ -1,0 +1,16 @@
+name: replace-me
+version: 0.1.0
+status: draft
+category: replace-me
+
+supported_starters:
+  - starter-web
+
+dependencies: []
+
+env: []
+
+data_changes: none
+
+verification:
+  - replace-me
