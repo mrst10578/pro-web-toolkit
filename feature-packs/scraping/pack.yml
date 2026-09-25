@@ -1,0 +1,20 @@
+name: scraping
+version: 0.1.0
+status: draft
+category: data-acquisition
+supported_starters:
+  - starter-web
+  - starter-saas-dashboard
+  - starter-ai
+  - starter-learning
+primary: crawlee
+alternative: playwright-direct
+dependencies:
+  - project-specific
+env: []
+data_changes: optional crawl/job/source records
+verification:
+  - representative source extracts correctly
+  - retry/rate behavior is bounded
+  - malformed page fails safely
+  - provenance is retained when required

@@ -22,28 +22,28 @@ packs:
     status: draft
     primary: sentry
   search:
-    status: planned
+    status: draft
     primary: meilisearch
   ai:
-    status: planned
+    status: draft
     primary: vercel-ai-sdk
   rag:
     status: planned
     primary: undecided
   pdf:
-    status: planned
+    status: draft
     primary: react-pdf
   scraping:
-    status: planned
+    status: draft
     primary: crawlee
   rich_text_editor:
-    status: planned
+    status: draft
     primary: tiptap
   background_jobs:
     status: planned
     primary: undecided
   realtime:
-    status: planned
+    status: draft
     primary: supabase-realtime
   rtl_persian:
     status: draft

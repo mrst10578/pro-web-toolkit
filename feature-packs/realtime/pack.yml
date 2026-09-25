@@ -1,0 +1,22 @@
+name: realtime
+version: 0.1.0
+status: draft
+category: messaging
+supported_starters:
+  - starter-web
+  - starter-saas-dashboard
+  - starter-ai
+  - starter-learning
+  - starter-commerce
+primary: supabase-realtime
+alternative: websocket-provider
+dependencies: []
+env:
+  - NEXT_PUBLIC_SUPABASE_URL
+  - NEXT_PUBLIC_SUPABASE_ANON_KEY
+data_changes: optional realtime-enabled tables/channels
+verification:
+  - update reaches subscribed client
+  - reconnect recovers safely
+  - duplicate event is harmless
+  - unauthorized subscription is rejected
