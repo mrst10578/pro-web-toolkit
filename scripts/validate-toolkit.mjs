@@ -37,7 +37,13 @@ const draftPacks = [
   { dir: "payments", key: "payments" },
   { dir: "analytics", key: "analytics" },
   { dir: "monitoring", key: "monitoring" },
-  { dir: "rtl-persian", key: "rtl_persian" }
+  { dir: "rtl-persian", key: "rtl_persian" },
+  { dir: "search", key: "search" },
+  { dir: "ai", key: "ai" },
+  { dir: "pdf", key: "pdf" },
+  { dir: "scraping", key: "scraping" },
+  { dir: "rich-text-editor", key: "rich_text_editor" },
+  { dir: "realtime", key: "realtime" }
 ];
 
 for (const pack of draftPacks) {

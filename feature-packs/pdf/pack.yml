@@ -1,0 +1,32 @@
+name: pdf
+version: 0.1.0
+status: draft
+category: documents
+
+supported_starters:
+  - starter-web
+  - starter-saas-dashboard
+  - starter-ai
+  - starter-cms
+  - starter-learning
+  - starter-commerce
+
+routing:
+  generation:
+    primary: react-pdf
+  manipulation:
+    primary: pdf-lib
+
+dependencies:
+  - project-specific
+
+env: []
+
+data_changes: optional document metadata
+
+verification:
+  - selected library matches the requested PDF job
+  - representative document opens correctly
+  - representative layout or manipulation is correct
+  - invalid input fails safely
+  - file lifecycle is defined

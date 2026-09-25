@@ -1,0 +1,23 @@
+name: search
+version: 0.1.0
+status: draft
+category: discovery
+supported_starters:
+  - starter-web
+  - starter-content
+  - starter-saas-dashboard
+  - starter-cms
+  - starter-learning
+  - starter-commerce
+primary: meilisearch
+alternative: none-by-default
+dependencies:
+  - project-specific
+env:
+  - MEILISEARCH_HOST
+  - MEILISEARCH_API_KEY
+data_changes: search index only
+verification:
+  - representative query returns expected results
+  - unauthorized data is not exposed
+  - empty and typo queries behave predictably
