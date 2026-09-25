@@ -13,7 +13,7 @@ principles:
 starters:
   web:
     repo: starter-web
-    status: planned
+    status: experimental
   content:
     repo: starter-content
     status: planned
