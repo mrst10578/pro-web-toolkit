@@ -7,19 +7,19 @@ packs:
     status: draft
     primary: supabase-postgres
   storage:
-    status: planned
+    status: draft
     primary: supabase-storage
   email:
-    status: planned
+    status: draft
     primary: resend-react-email
   payments:
-    status: planned
+    status: draft
     primary: stripe
   analytics:
-    status: planned
+    status: draft
     primary: posthog
   monitoring:
-    status: planned
+    status: draft
     primary: sentry
   search:
     status: planned

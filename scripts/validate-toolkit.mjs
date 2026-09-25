@@ -21,6 +21,31 @@ const required = [
   "starters/catalog.yml"
 ];
 
+const requiredPackFiles = [
+  "README.md",
+  "pack.yml",
+  "env.example",
+  "install.md",
+  "tests-or-verification.md"
+];
+
+const draftPacks = [
+  { dir: "auth", key: "auth" },
+  { dir: "database", key: "database" },
+  { dir: "storage", key: "storage" },
+  { dir: "email", key: "email" },
+  { dir: "payments", key: "payments" },
+  { dir: "analytics", key: "analytics" },
+  { dir: "monitoring", key: "monitoring" },
+  { dir: "rtl-persian", key: "rtl_persian" }
+];
+
+for (const pack of draftPacks) {
+  for (const file of requiredPackFiles) {
+    required.push(`feature-packs/${pack.dir}/${file}`);
+  }
+}
+
 const missing = required.filter((file) => !fs.existsSync(path.resolve(file)));
 
 if (missing.length) {
@@ -33,6 +58,14 @@ const packCatalog = fs.readFileSync("feature-packs/catalog.yml", "utf8");
 for (const pack of ["auth", "database", "storage", "email", "payments", "analytics", "monitoring", "search", "ai", "rag", "pdf", "scraping", "rtl_persian"]) {
   if (!packCatalog.includes(`  ${pack}:`)) {
     console.error(`Missing feature pack catalog entry: ${pack}`);
+    process.exit(1);
+  }
+}
+
+for (const pack of draftPacks) {
+  const expected = `  ${pack.key}:\n    status: draft`;
+  if (!packCatalog.includes(expected)) {
+    console.error(`Expected draft status for implemented pack: ${pack.key}`);
     process.exit(1);
   }
 }
