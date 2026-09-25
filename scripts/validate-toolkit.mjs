@@ -63,10 +63,8 @@ for (const pack of ["auth", "database", "storage", "email", "payments", "analyti
 }
 
 for (const pack of draftPacks) {
-  const blockStart = packCatalog.indexOf(`  ${pack}:`);
-  const nextBlock = packCatalog.indexOf("\n  ", blockStart + 3);
-  const block = nextBlock === -1 ? packCatalog.slice(blockStart) : packCatalog.slice(blockStart, nextBlock);
-  if (!block.includes("status: draft")) {
+  const expected = `  ${pack}:\n    status: draft`;
+  if (!packCatalog.includes(expected)) {
     console.error(`Expected draft status for implemented pack: ${pack}`);
     process.exit(1);
   }
