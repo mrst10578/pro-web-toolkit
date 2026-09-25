@@ -43,7 +43,9 @@ const draftPacks = [
   { dir: "pdf", key: "pdf" },
   { dir: "scraping", key: "scraping" },
   { dir: "rich-text-editor", key: "rich_text_editor" },
-  { dir: "realtime", key: "realtime" }
+  { dir: "realtime", key: "realtime" },
+  { dir: "rag", key: "rag" },
+  { dir: "background-jobs", key: "background_jobs" }
 ];
 
 for (const pack of draftPacks) {
@@ -61,7 +63,7 @@ if (missing.length) {
 }
 
 const packCatalog = fs.readFileSync("feature-packs/catalog.yml", "utf8");
-for (const pack of ["auth", "database", "storage", "email", "payments", "analytics", "monitoring", "search", "ai", "rag", "pdf", "scraping", "rtl_persian"]) {
+for (const pack of ["auth", "database", "storage", "email", "payments", "analytics", "monitoring", "search", "ai", "rag", "pdf", "scraping", "rich_text_editor", "background_jobs", "realtime", "rtl_persian"]) {
   if (!packCatalog.includes(`  ${pack}:`)) {
     console.error(`Missing feature pack catalog entry: ${pack}`);
     process.exit(1);
