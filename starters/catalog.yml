@@ -1,0 +1,29 @@
+starters:
+  starter-web:
+    status: planned
+    purpose: general web apps and product sites
+    base: nextjs
+  starter-content:
+    status: planned
+    purpose: content-heavy sites
+    base: astro
+  starter-saas-dashboard:
+    status: planned
+    purpose: SaaS portals and admin dashboards
+    base: nextjs
+  starter-ai:
+    status: planned
+    purpose: AI chat tools and RAG products
+    base: nextjs
+  starter-cms:
+    status: planned
+    purpose: editor-managed content products
+    base: nextjs-payload
+  starter-learning:
+    status: planned
+    purpose: LMS quiz exam and question-bank products
+    base: nextjs
+  starter-commerce:
+    status: optional
+    purpose: repeated commerce projects only
+    base: undecided
