@@ -1,0 +1,30 @@
+name: auth
+version: 0.1.0
+status: draft
+category: identity
+
+supported_starters:
+  - starter-web
+  - starter-saas-dashboard
+  - starter-ai
+  - starter-cms
+  - starter-learning
+  - starter-commerce
+
+primary: supabase-auth
+alternative: better-auth
+
+dependencies:
+  - project-specific
+
+env:
+  - NEXT_PUBLIC_SUPABASE_URL
+  - NEXT_PUBLIC_SUPABASE_ANON_KEY
+
+data_changes: optional user profile/role tables
+
+verification:
+  - sign-up or invited-user flow works
+  - sign-in and sign-out work
+  - protected route rejects anonymous access
+  - authorization is enforced server-side
