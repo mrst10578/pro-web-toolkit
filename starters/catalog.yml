@@ -1,8 +1,10 @@
 starters:
   starter-web:
-    status: planned
+    status: experimental
     purpose: general web apps and product sites
     base: nextjs
+    repository: mrst10578/starter-web
+    version: 0.1.0
   starter-content:
     status: planned
     purpose: content-heavy sites
