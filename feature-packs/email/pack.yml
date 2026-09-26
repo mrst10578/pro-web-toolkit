@@ -1,6 +1,6 @@
 name: email
 version: 0.1.0
-status: draft
+status: experimental
 category: messaging
 
 supported_starters:
