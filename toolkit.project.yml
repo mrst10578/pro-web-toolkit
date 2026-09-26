@@ -19,19 +19,19 @@ starters:
     status: experimental
   saas_dashboard:
     repo: starter-saas-dashboard
-    status: planned
+    status: experimental
   ai:
     repo: starter-ai
-    status: planned
+    status: experimental
   cms:
     repo: starter-cms
-    status: planned
+    status: experimental
   learning:
     repo: starter-learning
-    status: planned
+    status: experimental
   commerce:
     repo: starter-commerce
-    status: optional
+    status: experimental
 
 defaults:
   app_framework: nextjs
