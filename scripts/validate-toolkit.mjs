@@ -43,6 +43,7 @@ const required = [
   "docs/starter-contract.md",
   "docs/client-intake-checklist.md",
   "docs/maintenance.md",
+  "docs/repository-wiring.md",
   "feature-packs/catalog.yml",
   "feature-packs/_template/README.md",
   "feature-packs/_template/pack.yml",
@@ -50,6 +51,7 @@ const required = [
   "feature-packs/_template/install.md",
   "feature-packs/_template/tests-or-verification.md",
   "starters/catalog.yml",
+  "scripts/audit-repository-wiring.mjs",
 ];
 
 const requiredPackFiles = [
@@ -123,6 +125,27 @@ for (const starter of starterNames) {
   const status = nestedScalar(starterCatalog, starter, "status");
   if (status !== "experimental") {
     console.error(`Starter ${starter} must be experimental, found: ${status ?? "missing"}`);
+    process.exit(1);
+  }
+
+  const repository = nestedScalar(starterCatalog, starter, "repository");
+  if (repository !== `mrst10578/${starter}`) {
+    console.error(`Starter ${starter} repository mismatch: ${repository ?? "missing"}`);
+    process.exit(1);
+  }
+
+  const version = nestedScalar(starterCatalog, starter, "version");
+  if (version !== "0.1.0") {
+    console.error(`Starter ${starter} version mismatch: ${version ?? "missing"}`);
+    process.exit(1);
+  }
+
+  const metadataFile = nestedScalar(starterCatalog, starter, "metadata_file");
+  const contractFile = nestedScalar(starterCatalog, starter, "contract_file");
+  const readmeMarker = nestedScalar(starterCatalog, starter, "readme_marker");
+
+  if (metadataFile !== "starter.yml" || contractFile !== "TOOLKIT.md" || readmeMarker !== "TOOLKIT-LINK") {
+    console.error(`Starter ${starter} wiring contract is incomplete`);
     process.exit(1);
   }
 }
