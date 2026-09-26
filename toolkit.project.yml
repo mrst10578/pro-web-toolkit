@@ -16,7 +16,7 @@ starters:
     status: experimental
   content:
     repo: starter-content
-    status: planned
+    status: experimental
   saas_dashboard:
     repo: starter-saas-dashboard
     status: planned
