@@ -23,7 +23,11 @@ Client idea
 - `starter-ai` — chat, AI tools, RAG
 - `starter-cms` — editor-managed content
 - `starter-learning` — LMS, quiz, exam, question bank
-- `starter-commerce` — optional; create only when recurring commerce work justifies it
+- `starter-commerce` — storefronts, catalog, cart, and checkout-shell projects
+
+## Starter maturity
+
+All seven starters are currently **experimental v0.1.0**: usable baselines with CI and verification, but not yet declared production-stable across arbitrary client deployments.
 
 ## Feature packs
 
