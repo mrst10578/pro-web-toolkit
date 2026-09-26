@@ -23,6 +23,12 @@ Last synchronized: 2026-09-26
 - Learning keeps deterministic assessment scoring separate from persistence.
 - CMS follows the Payload 3.90.2 compatibility baseline and keeps preview secrets server-side.
 
+## Feature Pack status
+
+All 16 Feature Packs are **experimental v0.1.0**. Their required contract artifacts, declared starter compatibility, catalog/manifest status consistency, and unresolved-primary checks are enforced by Toolkit Validation.
+
+Live provider behavior remains project-specific verification and is not implied by the experimental status.
+
 ## Next maintenance phase
 
-The next toolkit phase is feature-pack implementation and compatibility testing across starter + pack combinations. Do not duplicate the same provider integration inside every starter.
+Use the toolkit on real client projects, record compatibility findings, and promote individual packs or starters to `ready` only after repeated successful use or equivalent strong evidence. Do not duplicate the same provider integration inside every starter.
