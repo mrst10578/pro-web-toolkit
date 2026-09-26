@@ -1,6 +1,6 @@
 name: search
 version: 0.1.0
-status: draft
+status: experimental
 category: discovery
 supported_starters:
   - starter-web
