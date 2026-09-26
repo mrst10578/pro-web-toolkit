@@ -5,39 +5,60 @@ starters:
     base: nextjs
     repository: mrst10578/starter-web
     version: 0.1.0
+    metadata_file: starter.yml
+    contract_file: TOOLKIT.md
+    readme_marker: TOOLKIT-LINK
   starter-content:
     status: experimental
     purpose: content-heavy sites
     base: astro
     repository: mrst10578/starter-content
     version: 0.1.0
+    metadata_file: starter.yml
+    contract_file: TOOLKIT.md
+    readme_marker: TOOLKIT-LINK
   starter-saas-dashboard:
     status: experimental
     purpose: SaaS portals and admin dashboards
     base: nextjs
     repository: mrst10578/starter-saas-dashboard
     version: 0.1.0
+    metadata_file: starter.yml
+    contract_file: TOOLKIT.md
+    readme_marker: TOOLKIT-LINK
   starter-ai:
     status: experimental
     purpose: AI chat tools and AI-first products
     base: nextjs
     repository: mrst10578/starter-ai
     version: 0.1.0
+    metadata_file: starter.yml
+    contract_file: TOOLKIT.md
+    readme_marker: TOOLKIT-LINK
   starter-cms:
     status: experimental
     purpose: editor-managed content products
     base: nextjs-payload
     repository: mrst10578/starter-cms
     version: 0.1.0
+    metadata_file: starter.yml
+    contract_file: TOOLKIT.md
+    readme_marker: TOOLKIT-LINK
   starter-learning:
     status: experimental
     purpose: LMS quiz exam and question-bank products
     base: nextjs
     repository: mrst10578/starter-learning
     version: 0.1.0
+    metadata_file: starter.yml
+    contract_file: TOOLKIT.md
+    readme_marker: TOOLKIT-LINK
   starter-commerce:
     status: experimental
     purpose: storefront catalog cart and checkout-shell products
     base: nextjs
     repository: mrst10578/starter-commerce
     version: 0.1.0
+    metadata_file: starter.yml
+    contract_file: TOOLKIT.md
+    readme_marker: TOOLKIT-LINK
