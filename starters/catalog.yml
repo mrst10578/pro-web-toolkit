@@ -12,22 +12,32 @@ starters:
     repository: mrst10578/starter-content
     version: 0.1.0
   starter-saas-dashboard:
-    status: planned
+    status: experimental
     purpose: SaaS portals and admin dashboards
     base: nextjs
+    repository: mrst10578/starter-saas-dashboard
+    version: 0.1.0
   starter-ai:
-    status: planned
-    purpose: AI chat tools and RAG products
+    status: experimental
+    purpose: AI chat tools and AI-first products
     base: nextjs
+    repository: mrst10578/starter-ai
+    version: 0.1.0
   starter-cms:
-    status: planned
+    status: experimental
     purpose: editor-managed content products
     base: nextjs-payload
+    repository: mrst10578/starter-cms
+    version: 0.1.0
   starter-learning:
-    status: planned
+    status: experimental
     purpose: LMS quiz exam and question-bank products
     base: nextjs
+    repository: mrst10578/starter-learning
+    version: 0.1.0
   starter-commerce:
-    status: optional
-    purpose: repeated commerce projects only
-    base: undecided
+    status: experimental
+    purpose: storefront catalog cart and checkout-shell products
+    base: nextjs
+    repository: mrst10578/starter-commerce
+    version: 0.1.0
