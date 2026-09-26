@@ -6,9 +6,11 @@ starters:
     repository: mrst10578/starter-web
     version: 0.1.0
   starter-content:
-    status: planned
+    status: experimental
     purpose: content-heavy sites
     base: astro
+    repository: mrst10578/starter-content
+    version: 0.1.0
   starter-saas-dashboard:
     status: planned
     purpose: SaaS portals and admin dashboards
