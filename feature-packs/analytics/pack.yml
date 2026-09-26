@@ -1,6 +1,6 @@
 name: analytics
 version: 0.1.0
-status: draft
+status: experimental
 category: observability
 
 supported_starters:

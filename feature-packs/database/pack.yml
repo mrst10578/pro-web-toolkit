@@ -1,6 +1,6 @@
 name: database
 version: 0.1.0
-status: draft
+status: experimental
 category: data
 
 supported_starters:

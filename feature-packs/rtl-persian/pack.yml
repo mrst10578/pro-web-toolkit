@@ -1,6 +1,6 @@
 name: rtl-persian
 version: 0.1.0
-status: draft
+status: experimental
 category: localization
 
 supported_starters:

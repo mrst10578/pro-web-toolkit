@@ -1,6 +1,6 @@
 name: pdf
 version: 0.1.0
-status: draft
+status: experimental
 category: documents
 
 supported_starters:
