@@ -1,6 +1,6 @@
 name: auth
 version: 0.1.0
-status: draft
+status: experimental
 category: identity
 
 supported_starters:
