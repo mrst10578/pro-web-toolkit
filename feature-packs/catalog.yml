@@ -1,51 +1,51 @@
 packs:
   auth:
-    status: draft
+    status: experimental
     primary: supabase-auth
     alternative: better-auth
   database:
-    status: draft
+    status: experimental
     primary: supabase-postgres
   storage:
-    status: draft
+    status: experimental
     primary: supabase-storage
   email:
-    status: draft
+    status: experimental
     primary: resend-react-email
   payments:
-    status: draft
+    status: experimental
     primary: stripe
   analytics:
-    status: draft
+    status: experimental
     primary: posthog
   monitoring:
-    status: draft
+    status: experimental
     primary: sentry
   search:
-    status: draft
+    status: experimental
     primary: meilisearch
   ai:
-    status: draft
+    status: experimental
     primary: vercel-ai-sdk
   rag:
-    status: draft
+    status: experimental
     primary: supabase-postgres-pgvector
   pdf:
-    status: draft
+    status: experimental
     primary: routed-by-job
   scraping:
-    status: draft
+    status: experimental
     primary: crawlee
   rich_text_editor:
-    status: draft
+    status: experimental
     primary: tiptap
   background_jobs:
-    status: draft
+    status: experimental
     primary: inngest
     alternative: trigger-dev
   realtime:
-    status: draft
+    status: experimental
     primary: supabase-realtime
   rtl_persian:
-    status: draft
+    status: experimental
     primary: custom-pack
