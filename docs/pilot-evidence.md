@@ -266,3 +266,104 @@ It also adds another independent code/CI data point for `auth`, `database`, and 
 
 The evidence is materially stronger, but live-provider verification and/or further independent successful compositions are still required before promotion from `experimental` to `ready`.
 
+
+
+---
+
+## Test-Cms — CMS Knowledge Hub
+
+Repository: `mrst10578/Test-Cms`
+
+Source starter: `starter-cms@0.1.0`
+
+Feature Packs exercised:
+
+- `email@0.1.0`
+- `analytics@0.1.0`
+- `monitoring@0.1.0`
+- `search@0.1.0`
+- `pdf@0.1.0`
+- `background-jobs@0.1.0`
+- `rtl-persian@0.1.0`
+
+Payload baseline capabilities intentionally remained the owner of authentication, SQLite persistence, media uploads, drafts/preview, and Lexical rich text instead of duplicating those responsibilities with a second provider stack.
+
+RAG was intentionally deferred because the toolkit RAG contract depends on AI plus vector-capable database/storage responsibilities that this pilot does not own.
+
+### Verified by CI
+
+The merged pilot PR passed:
+
+- Pilot PR: `mrst10578/Test-Cms#1`
+- Pilot merge SHA: `35b48de4066721a6c1412c2ea97ad6fcc0e5bd32`
+- Successful application CI run: `36334615282`
+- Final head CI run after evidence documentation: `36334855584`
+
+The successful pipeline covered:
+
+- reproducible install with `npm ci`
+- ESLint
+- Payload type generation
+- Payload import-map generation
+- TypeScript typecheck
+- Vitest
+- Next.js production build
+- Playwright Chromium
+- Playwright E2E
+
+E2E verifies the Persian/RTL public shell, fail-closed controlled email/monitoring test routes when disabled, and a representative generated PDF with a valid PDF signature.
+
+### Real integration paths present in the pilot
+
+The pilot contains implementation for:
+
+- Meilisearch content search with a Payload published-content fallback if search is unavailable
+- PostHog analytics that remains disabled when configuration is absent
+- Sentry v11 monitoring with privacy-restricted data collection
+- controlled Resend verification endpoint
+- generated PDF verification route using pdf-lib
+- Inngest background reindexing for published content
+- Persian `lang="fa"` / `dir="rtl"` public experience
+
+### Package compatibility observed
+
+The successful lockfile/CI composition included:
+
+- `next 16.3.3`
+- `payload 3.90.2`
+- `typescript 5.9.3`
+- `@sentry/nextjs 11.0.0`
+- `inngest 4.21.0`
+- `meilisearch 0.62.0`
+- `resend 6.30.0`
+- `posthog-js 1.434.15`
+- `pdf-lib 1.17.1`
+
+### Findings from this pilot
+
+1. `inngest@4.21.0` requires TypeScript `>=5.8.0`; the CMS starter originally pinned TypeScript `5.7.3`. The pilot upgraded to `5.9.3` and revalidated the full composition instead of bypassing npm peer checks.
+2. The current Inngest v4 two-argument `createFunction(configuration, handler)` API reinforces the version-aware background-jobs guidance already observed in the AI pilot.
+3. `meilisearch@0.62.0` exports `Meilisearch`; stale `MeiliSearch` examples fail current TypeScript verification.
+4. Provider-backed search should fail safely when the product can support a local published-content fallback.
+5. A generated PDF route needs framework-level build/E2E verification, not only a library-level generation call.
+6. A CMS starter with built-in auth/database/media/editor capabilities should not compose duplicate providers merely to increase Feature Pack coverage. Capability ownership must remain explicit.
+
+### Not yet verified
+
+This pilot does **not** claim live-provider proof for:
+
+- real Meilisearch indexing and remote query delivery
+- real PostHog event ingestion
+- real Sentry event delivery and captured-event privacy inspection
+- real Resend email delivery
+- real Inngest remote execution, retry visibility, and duplicate-trigger behavior
+
+The representative PDF is structurally verified in CI. Production Persian PDF body content still requires an embedded Persian-capable font plus visual inspection.
+
+### Maturity effect
+
+This adds the first successful `starter-cms` composition/build data point.
+
+It also adds another independent code/CI data point for `monitoring`, `pdf`, and `background-jobs`, and a first CMS-specific composition data point for `search`, `email`, `analytics`, and `rtl-persian`.
+
+The evidence is stronger, but live-provider verification and/or additional independent successful compositions are still required before promotion from `experimental` to `ready`.
