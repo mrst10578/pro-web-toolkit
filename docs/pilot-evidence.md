@@ -367,3 +367,107 @@ This adds the first successful `starter-cms` composition/build data point.
 It also adds another independent code/CI data point for `monitoring`, `pdf`, and `background-jobs`, and a first CMS-specific composition data point for `search`, `email`, `analytics`, and `rtl-persian`.
 
 The evidence is stronger, but live-provider verification and/or additional independent successful compositions are still required before promotion from `experimental` to `ready`.
+
+
+
+---
+
+## Test-Learning — Learning Question Bank / Exam Platform
+
+Repository: `mrst10578/test-learning`
+
+Source starter: `starter-learning@0.1.0`
+
+Selected scenario packs:
+
+- `auth@0.1.0`
+- `database@0.1.0`
+- `storage@0.1.0`
+- `email@0.1.0`
+- `analytics@0.1.0`
+- `monitoring@0.1.0`
+- `search@0.1.0`
+- `ai@0.1.0`
+- `rag@0.1.0`
+- `pdf@0.1.0`
+- `scraping@0.1.0`
+- `rich-text-editor@0.1.0`
+- `background-jobs@0.1.0`
+- `realtime@0.1.0`
+- `rtl-persian@0.1.0`
+
+### Evidence boundary
+
+This pilot is a **code/CI provider-boundary composition test**, not full SDK-compatibility proof for every selected Feature Pack.
+
+Several capabilities intentionally use isolated HTTP/provider boundaries or local contract implementations so CI can attribute failures cleanly and run without external credentials. Pack-specific SDK compatibility is only claimed where the actual pack SDK/runtime was exercised.
+
+### Verified by CI
+
+The merged pilot PR passed:
+
+- Pilot PR: `mrst10578/test-learning#1`
+- Pilot merge SHA: `1a127b76f5ed7aa3c413297662ed7555140793a9`
+- Final CI run: `36335133055`
+
+The successful pipeline covered:
+
+- reproducible install with `npm ci`
+- ESLint
+- TypeScript typecheck
+- unit tests
+- Next.js production build
+- Playwright Chromium
+- Playwright E2E
+
+The browser tests verify a Persian-first `lang="fa"` / `dir="rtl"` composition and the representative learning-ingestion workflow surface.
+
+### Contracts and boundaries present in the pilot
+
+The pilot contains:
+
+- deterministic assessment scoring kept independent from AI/provider availability
+- Supabase-style auth boundary with fail-closed configuration behavior
+- Postgres schema plus RLS ownership policies for learning sources, questions, assessments, attempts, and source chunks
+- private source-storage ownership policies
+- pgvector retrieval function constrained by `auth.uid()`
+- owner filtering before local retrieval context can be selected
+- exact-host allowlist-gated scraping plus localhost/private-IPv4 rejection
+- authenticated storage, search, AI, email, and controlled monitoring routes
+- deterministic background-job IDs
+- Realtime publication contract for attempts
+- structured human-review editing before publication
+- Persian RTL document/layout semantics
+
+### Findings from this pilot
+
+1. The first CI attempt exposed a unit-test module-resolution mismatch when a new module used the TypeScript `@/*` alias but the starter Vitest configuration did not resolve that alias. The pilot corrected the module boundary and reran the full pipeline.
+2. Next.js lint caught internal navigation implemented with `window.location.assign`; the pilot replaced it with the Next router.
+3. Generated-project identity was still inherited from `starter-learning` in starter/package metadata. Before merge, the pilot was corrected to identify as `test-learning@0.1.0`, preserve `starter-learning@0.1.0` separately as `source_starter`, and mark the generated project as non-template.
+4. This repeats the earlier Test-SaaS lesson that generated-project identity and source-starter identity must be separate across all project metadata surfaces.
+5. A broad composition can produce useful architecture evidence without proving the current SDK surface of every selected pack. The evidence registry must distinguish provider-boundary proof from actual package/version compatibility.
+
+### Not yet verified
+
+This pilot does **not** claim:
+
+- live Supabase signup/login/logout, migration application, RLS isolation, Storage, or Realtime delivery
+- live Resend, PostHog, Sentry, or Meilisearch delivery
+- live model-generation or embedding delivery
+- real Inngest durable execution/retry behavior
+- production scraping against an approved target host
+- real PDF extraction/manipulation through the toolkit PDF libraries
+- Tiptap-specific rich-text-editor compatibility
+- Vercel AI SDK-specific compatibility
+- Sentry SDK-specific compatibility in this pilot
+- SDK/package compatibility for provider packs implemented here only through isolated HTTP boundaries
+
+Those checks require a dedicated SDK/live-provider verification phase.
+
+### Maturity effect
+
+This adds the first successful `starter-learning` project-specific composition/build data point.
+
+It strengthens evidence for the starter's deterministic scoring contract, Persian RTL composition, ownership-oriented data design, guarded ingestion, and credential-free fail-closed behavior.
+
+It must **not** be counted as full SDK compatibility evidence for all selected Feature Packs. No component should be promoted from `experimental` to `ready` based on this pilot alone.
