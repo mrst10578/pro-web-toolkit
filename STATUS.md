@@ -52,3 +52,11 @@ Live Supabase authentication/RLS and Sentry event delivery remain unverified unt
 ## Next maintenance phase
 
 Complete the live provider checklist in `Test-SaaS`, then run additional real-project compositions before promoting any starter or pack to `ready`.
+
+## Pilot evidence
+
+- `mrst10578/Test-SaaS` successfully composed `starter-saas-dashboard@0.1.0` with the auth, database, and monitoring packs.
+- Its merged pilot PR passed `npm ci + lint + typecheck + unit + build + Playwright`.
+- The pilot produced reusable fixes for current Supabase publishable-key naming and Sentry v11 integration.
+- Live Supabase/Sentry provider behavior remains unverified until real project credentials are supplied.
+- See `docs/pilot-evidence.md` for the exact evidence boundary.
