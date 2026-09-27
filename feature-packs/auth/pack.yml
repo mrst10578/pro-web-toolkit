@@ -19,6 +19,7 @@ dependencies:
 
 env:
   - NEXT_PUBLIC_SUPABASE_URL
+  - NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
   - NEXT_PUBLIC_SUPABASE_ANON_KEY
 
 data_changes: optional user profile/role tables

@@ -1,6 +1,6 @@
 # Toolkit Status
 
-Last synchronized: 2026-09-26
+Last synchronized: 2026-09-27
 
 ## Starter repositories
 
@@ -18,17 +18,37 @@ Last synchronized: 2026-09-26
 
 - Starter cores remain provider-light unless the provider is intrinsic to the starter, such as Payload in starter-cms and the AI SDK in starter-ai.
 - Auth, database, payments, email, analytics, monitoring, storage, RAG, search, and similar integrations stay as feature packs until selected by a project brief.
-- Reproducible installs use committed lockfiles and npm ci for the five newly built Next.js starters.
+- Reproducible installs use committed lockfiles and npm ci.
 - Commerce uses integer minor-unit money arithmetic and leaves payment authority to the payments feature pack.
 - Learning keeps deterministic assessment scoring separate from persistence.
 - CMS follows the Payload 3.90.2 compatibility baseline and keeps preview secrets server-side.
 
 ## Feature Pack status
 
-All 16 Feature Packs are **experimental v0.1.0**. Their required contract artifacts, declared starter compatibility, catalog/manifest status consistency, and unresolved-primary checks are enforced by Toolkit Validation.
+All 16 Feature Packs remain **experimental v0.1.0**. Their required contract artifacts, declared starter compatibility, catalog/manifest status consistency, and unresolved-primary checks are enforced by Toolkit Validation.
 
-Live provider behavior remains project-specific verification and is not implied by the experimental status.
+## First real composition evidence
+
+`mrst10578/Test-SaaS` is the first integration pilot created from `starter-saas-dashboard` with `auth + database + monitoring`.
+
+PR #1 passed:
+
+- npm ci
+- lint
+- typecheck
+- unit tests
+- Next.js build
+- Playwright E2E
+
+The pilot also exposed and corrected current provider integration details:
+
+- current Supabase projects use a publishable key, while the legacy anon key remains a compatibility fallback
+- Next.js 16 uses `proxy.ts` for the Supabase session-refresh/gating path
+- Sentry v11 moves `withSentryConfig` to `@sentry/nextjs/config`
+- Sentry v11 replaces `sendDefaultPii` with granular `dataCollection` policy
+
+Live Supabase authentication/RLS and Sentry event delivery remain unverified until real provider credentials are attached to the pilot.
 
 ## Next maintenance phase
 
-Use the toolkit on real client projects, record compatibility findings, and promote individual packs or starters to `ready` only after repeated successful use or equivalent strong evidence. Do not duplicate the same provider integration inside every starter.
+Complete the live provider checklist in `Test-SaaS`, then run additional real-project compositions before promoting any starter or pack to `ready`.
