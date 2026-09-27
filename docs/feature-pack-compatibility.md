@@ -33,6 +33,14 @@ Legend: ✅ supported by the pack contract · — not a default supported target
 4. Treat provider credentials, authorization policies, migrations, webhooks, external services, and production recovery as project-specific verification.
 5. If a project needs a combination marked unsupported, design that combination explicitly instead of silently widening the pack contract.
 
+## Observed integration evidence
+
+| Composition | Evidence | Live provider status |
+| --- | --- | --- |
+| `starter-saas-dashboard + auth + database + monitoring` | `mrst10578/Test-SaaS` PR #1: npm ci, lint, typecheck, unit tests, Next build, and Playwright E2E passed; auth fails closed without credentials; Supabase RLS migration and Sentry integration are present | Not yet verified with real Supabase/Sentry credentials |
+
+This evidence proves the current code composition and CI-observed behavior. It does **not** prove live sign-in delivery, provider-side migration application, cross-user RLS isolation, Sentry event delivery, or source-map upload.
+
 ## Evidence boundary
 
 The matrix proves that the toolkit's **declared composition rules are internally consistent**. It does not prove a live third-party service call, because credentials and client-specific infrastructure intentionally do not live in this repository.
