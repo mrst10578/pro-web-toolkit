@@ -16,6 +16,10 @@ Feature Packs exercised:
 
 The merged pilot PR passed:
 
+- Pilot PR: `mrst10578/Test-SaaS#1`
+- Pilot merge SHA: `3f579f26f63082b9a1ebd779405cc78e532f9fcc`
+- CI run: `36281047941`
+
 - reproducible install with `npm ci`
 - ESLint
 - TypeScript typecheck
