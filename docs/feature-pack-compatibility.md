@@ -38,8 +38,10 @@ Legend: ✅ supported by the pack contract · — not a default supported target
 | Composition | Evidence | Live provider status |
 | --- | --- | --- |
 | `starter-saas-dashboard + auth + database + monitoring` | `mrst10578/Test-SaaS` PR #1: npm ci, lint, typecheck, unit tests, Next build, and Playwright E2E passed; auth fails closed without credentials; Supabase RLS migration and Sentry integration are present | Not yet verified with real Supabase/Sentry credentials |
+| `starter-web + auth + database + email + payments + analytics + monitoring + realtime` | `mrst10578/Test-web` PR #1: npm ci, lint, typecheck, unit tests, Next build, and Playwright E2E passed; protected portal fails closed without credentials; booking/payment/email/realtime integration paths are present | Not yet verified with live Supabase/Stripe/Resend/PostHog/Sentry providers |
+| `starter-ai + auth + database + storage + ai + rag + pdf + scraping + background-jobs + monitoring` | `mrst10578/Test-Ai` PR #1: npm ci, lint, typecheck, unit tests, Next build, and Playwright E2E passed; protected workspace fails closed; pgvector/RLS/Storage, AI/RAG, PDF, bounded scraping, Inngest, and Sentry integration paths are present | Not yet verified with live Supabase/AI/Inngest/Sentry providers |
 
-This evidence proves the current code composition and CI-observed behavior. It does **not** prove live sign-in delivery, provider-side migration application, cross-user RLS isolation, Sentry event delivery, or source-map upload.
+These rows prove the current code compositions and CI-observed behavior. They do **not** prove live provider delivery, provider-side migration application, cross-user isolation against hosted data, payment/email/event delivery, remote-source behavior, vector retrieval quality, or monitoring event delivery.
 
 ## Evidence boundary
 
