@@ -158,3 +158,111 @@ This adds a successful `starter-web` composition/build data point.
 It also provides a second independent code/CI composition data point for `auth`, `database`, and `monitoring` when considered together with Test-SaaS, and a first real composition data point for `email`, `payments`, `analytics`, and `realtime`.
 
 The evidence is stronger, but live-provider verification and/or additional independent successful compositions are still required before any affected component should be promoted from `experimental` to `ready`.
+
+---
+
+## Test-Ai — AI Document Workspace
+
+Repository: `mrst10578/Test-Ai`
+
+Source starter: `starter-ai@0.1.0`
+
+Feature Packs exercised:
+
+- `auth@0.1.0`
+- `database@0.1.0`
+- `storage@0.1.0`
+- `ai@0.1.0`
+- `rag@0.1.0`
+- `pdf@0.1.0`
+- `scraping@0.1.0`
+- `background-jobs@0.1.0`
+- `monitoring@0.1.0`
+
+### Composition flow
+
+`private PDF/text upload or public URL -> Inngest ingestion -> extraction -> chunking -> embeddings -> owner-scoped pgvector retrieval -> grounded streamed answer`
+
+### Verified by CI
+
+The merged pilot PR passed:
+
+- Pilot PR: `mrst10578/Test-Ai#1`
+- Pilot merge SHA: `6b26db1bdc6d2bb24c0c05f57106c5aecb64264f`
+- Final CI run: `36334579480`
+
+The successful final pipeline covered:
+
+- reproducible install with `npm ci`
+- ESLint
+- TypeScript typecheck
+- unit tests
+- Next.js production build
+- Playwright Chromium
+- Playwright E2E
+
+Credential-free browser verification confirms that the protected `/workspace` route fails closed when Supabase is absent. E2E also verifies that the representative PDF endpoint returns a valid PDF signature.
+
+### Real integration paths present in the pilot
+
+The pilot contains implementation and migrations for:
+
+- Supabase Auth with server-side route protection and email confirmation
+- Supabase Postgres document metadata with per-user RLS
+- private Supabase Storage with owner-scoped object paths and policies
+- pgvector-backed document chunks and owner-scoped similarity retrieval
+- AI SDK generation plus embedding composition
+- PDF.js extraction and pdf-lib representative generation
+- bounded public URL ingestion with private-network/localhost rejection, DNS checks, redirect limits, byte limits, and request timeout
+- Inngest background ingestion with retries, deterministic chunk indexes, source/chunk hashing, and idempotent upsert behavior
+- Sentry v11 optional monitoring with privacy-conscious data-collection defaults
+
+The generated project records its own identity separately from `starter-ai` and has no runtime dependency on `pro-web-toolkit`.
+
+### Package compatibility observed
+
+The successful lockfile/CI composition included:
+
+- `next 16.3.6`
+- `react 19.3.0`
+- `ai 7.0.114`
+- `inngest 4.21.0`
+- `pdfjs-dist 6.3.289`
+- `pdf-lib 1.17.1`
+- `@sentry/nextjs 11.0.0`
+- `@supabase/ssr 0.12.7`
+- `@supabase/supabase-js 2.117.2`
+
+### Findings from this pilot
+
+1. Inngest v4 uses a different function-definition shape from older snippets: triggers live in the first configuration object and `createFunction` is used as `createFunction(configuration, handler)`.
+2. PDF.js 6 changed the extraction/lifecycle assumptions used by older integration snippets. The pilot removes an unsupported document option and destroys the loading task rather than assuming the document proxy exposes the same teardown method.
+3. Version-sensitive Feature Packs need real lockfile plus TypeScript verification. Documentation-only compatibility is insufficient when SDK majors evolve.
+4. Independent unit-test runtimes should not rely on framework-only import markers unless that marker is explicitly installed/resolved in the test environment.
+5. RAG ownership must be enforced at retrieval/storage/database boundaries rather than trusting a browser-supplied user identifier.
+6. Scraping requires an explicit trust boundary. The pilot applies protocol, host, DNS, redirect, size, timeout, and content-type constraints before remote text becomes an AI source.
+
+### Not yet verified
+
+This pilot does **not** claim live-provider proof for:
+
+- applying the pgvector/RLS/Storage migration to a hosted Supabase project
+- real signup, confirmation, sign-in, session refresh, or sign-out
+- real private upload/download/delete across two users
+- live cross-user isolation for documents, chunks, Storage objects, and vector retrieval
+- real AI generation or embedding delivery through the configured provider/Gateway
+- embedding dimensionality and representative retrieval quality against a live provider
+- real Inngest event delivery, retries, duplicate re-trigger behavior, and terminal-failure visibility
+- representative deployed remote URL extraction
+- real Sentry event delivery, source-map upload, and captured-event privacy inspection
+
+Those checks require provider projects, secrets, and external side effects.
+
+### Maturity effect
+
+This adds the first successful `starter-ai` composition/build data point and the first real code/CI composition data point for `storage`, `ai`, `rag`, `pdf`, `scraping`, and `background-jobs`.
+
+It also adds another independent code/CI data point for `auth`, `database`, and `monitoring`.
+
+The evidence is materially stronger, but live-provider verification and/or further independent successful compositions are still required before promotion from `experimental` to `ready`.
+

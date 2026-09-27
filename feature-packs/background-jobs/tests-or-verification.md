@@ -1,6 +1,9 @@
 # Background Jobs Verification
 
 - The originating request can complete without waiting for the job.
+- The job definition compiles against the installed background-job SDK major.
+- The trigger syntax matches the installed SDK version.
+- A reproducible lockfile install plus typecheck catches SDK API drift before merge.
 - A transient failure retries safely.
 - A repeated trigger does not duplicate protected side effects.
 - A permanent failure becomes visible for diagnosis/recovery.
