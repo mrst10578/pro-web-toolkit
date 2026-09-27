@@ -29,3 +29,4 @@ verification:
   - sign-in and sign-out work
   - protected route rejects anonymous access
   - authorization is enforced server-side
+  - missing provider configuration fails closed

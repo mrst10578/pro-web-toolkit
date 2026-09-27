@@ -32,3 +32,4 @@ verification:
   - environment is tagged
   - sensitive data is scrubbed
   - app remains usable if monitoring fails
+  - SDK integration matches the installed major version
