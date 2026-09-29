@@ -471,3 +471,101 @@ This adds the first successful `starter-learning` project-specific composition/b
 It strengthens evidence for the starter's deterministic scoring contract, Persian RTL composition, ownership-oriented data design, guarded ingestion, and credential-free fail-closed behavior.
 
 It must **not** be counted as full SDK compatibility evidence for all selected Feature Packs. No component should be promoted from `experimental` to `ready` based on this pilot alone.
+
+
+---
+
+## Test-Commerace — Commerce Storefront Pilot
+
+Repository: `mrst10578/Test-Commerace`
+
+Source starter: `starter-commerce@0.1.0`
+
+Feature Packs exercised:
+
+- `payments@0.1.0`
+- `email@0.1.0`
+- `analytics@0.1.0`
+- `monitoring@0.1.0`
+- `search@0.1.0`
+- `pdf@0.1.0`
+- `background-jobs@0.1.0`
+- `rtl-persian@0.1.0`
+
+### Evidence boundary
+
+This pilot is an **independent generated-project code/CI composition test**.
+
+Sentry is exercised through its installed SDK. Stripe Checkout creation, Resend, PostHog, Meilisearch, and Inngest are exercised through isolated server-side HTTP/provider boundaries. The PDF route verifies representative generated-PDF behavior but does not claim compatibility with every library in the PDF pack.
+
+Accordingly, this pilot must not be counted as official SDK-version compatibility proof for provider packs that do not install their SDK.
+
+### Verified by CI
+
+The merged pilot PR passed:
+
+- Pilot PR: `mrst10578/Test-Commerace#1`
+- Pilot merge SHA: `f4b40321d4ab50710cdeb8c458bc5929f04f6c36`
+- CI run: `36533103488`
+
+The successful pipeline covered:
+
+- reproducible install with `npm ci`
+- ESLint
+- TypeScript typecheck
+- Vitest
+- Next.js production build
+- Playwright Chromium
+- Playwright E2E
+
+E2E verifies the Persian-first `lang="fa"` / `dir="rtl"` storefront, fail-safe checkout behavior without Stripe credentials, and a representative PDF endpoint with a valid PDF signature.
+
+### Real integration paths present in the pilot
+
+The pilot contains:
+
+- server-side Stripe Checkout Session creation
+- Stripe-style webhook HMAC verification with timestamp tolerance
+- webhook-driven order-paid handling rather than trusting browser redirect state
+- Resend transactional receipt boundary
+- PostHog server-event boundary
+- Meilisearch query boundary with a safe local catalog fallback
+- generated invoice PDF endpoint
+- Inngest event-enqueue boundary for post-payment work
+- Sentry v11 monitoring with privacy-restricted data collection
+- Persian-first RTL document semantics
+- provider-unconfigured paths that fail safely
+
+The generated project records its own identity as `mrst10578/Test-Commerace` separately from `starter-commerce` and has no runtime dependency on the starter or toolkit repositories.
+
+### Findings from this pilot
+
+1. The first full CI attempt exposed a unit-test module-resolution mismatch: a reusable library module used the Next.js `@/*` alias while the existing Vitest configuration did not resolve that alias. Switching the reusable module to relative imports restored the complete pipeline.
+2. Generated-project identity must be updated across repository metadata, README, package metadata, and lockfile while preserving the source starter separately.
+3. Payment success is server-authoritative. Browser redirect state is not trusted as proof of payment; the webhook boundary verifies the signed payload.
+4. Optional external providers must not break credential-free CI or application startup.
+5. Search can fail safely when the product has a deliberate local fallback.
+6. Broad composition evidence must distinguish official SDK compatibility from HTTP/provider-boundary compatibility.
+
+### Not yet verified
+
+This pilot does **not** claim:
+
+- real Stripe Checkout payment or provider-delivered webhook/retry behavior
+- real Resend email delivery
+- real PostHog event ingestion
+- real Meilisearch indexing/query delivery
+- real Inngest execution, retry behavior, or terminal-failure observability
+- real Sentry event delivery/source-map upload
+- official SDK compatibility for Stripe, Resend, PostHog, Meilisearch, or Inngest in this pilot
+- production PDF visual correctness across representative invoices/viewers beyond the CI structural check
+
+Those checks require provider projects, credentials, official SDK-specific pilots where applicable, and external side effects.
+
+### Maturity effect
+
+This adds the first successful `starter-commerce` independent project-specific composition/build data point.
+
+It strengthens code/CI evidence for commerce-specific provider boundaries, Persian RTL composition, PDF endpoint behavior, fail-safe optional integrations, and generated-project independence.
+
+No component should be promoted from `experimental` to `ready` based on this pilot alone.
