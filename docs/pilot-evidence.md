@@ -570,3 +570,95 @@ This adds the first successful `starter-commerce` independent project-specific c
 It strengthens code/CI evidence for commerce-specific provider boundaries, Persian RTL composition, PDF endpoint behavior, fail-safe optional integrations, and generated-project independence.
 
 No component should be promoted from `experimental` to `ready` based on this pilot alone.
+
+---
+
+## Test-Content — Persian Content Publication
+
+Repository: `mrst10578/Test-Content`
+
+Source starter: `starter-content@0.1.0`
+
+Feature Packs exercised:
+
+- `search@0.1.0`
+- `analytics@0.1.0`
+- `monitoring@0.1.0`
+- `rtl-persian@0.1.0`
+
+### Composition flow
+
+`Astro content -> Persian/RTL static pages -> generated public search index -> optional Meilisearch query -> local fallback -> consent-gated PostHog -> optional Sentry`
+
+### Verified by CI
+
+The merged pilot PR passed:
+
+- Pilot PR: `mrst10578/Test-Content#1`
+- Pilot merge SHA: `b64c540ca45194779f8e425d66b3149637750b02`
+- Final PR-head CI run: `36533229504`
+- Post-merge main CI run: `36533311923`
+
+The successful pipeline covered:
+
+- reproducible install with `npm ci`
+- Astro TypeScript/content checking with `astro check`
+- Astro production build
+- build smoke verification
+
+The smoke verifier confirms:
+
+- `lang="fa"` and `dir="rtl"` in generated output
+- a real Persian article is present in the generated public search corpus
+- the static/local search fallback is generated
+- search, RSS, robots, and sitemap output survive the composition
+- the controlled monitoring page is present while monitoring remains disabled by default
+
+### Real integration paths present in the pilot
+
+The pilot contains implementation for:
+
+- Meilisearch `0.62.0` server-side indexing with a separate browser-safe search credential path
+- a generated public `/search-index.json` fallback when remote search is absent or fails
+- PostHog analytics gated by explicit browser consent and limited to a small explicit event
+- Sentry Astro v11 client/server configuration with restricted `dataCollection`
+- source-map upload disabled unless build credentials are configured
+- Persian/RTL document semantics, localized visible navigation, Persian dates, and mixed Persian/Latin content
+- framework-specific Astro public environment variables rather than reusing Next.js-only `NEXT_PUBLIC_` assumptions
+
+### Failures that produced reusable evidence
+
+The first PR CI run (`36532906215`) failed during `astro check` because the browser search script relied on implicit `any` values and generic DOM `Element` types. The pilot replaced those loose boundaries with explicit search-document types and typed DOM selectors.
+
+Dependency installation also exposed that newly composed provider dependencies required a newer Node 22 baseline than the starter's previous `22.12.0` CI pin. The pilot aligned local/CI/project metadata to Node `22.19.0` and regenerated the lockfile before the final green runs.
+
+### Findings returned to the toolkit
+
+1. Browser-exposed provider environment variables are framework-specific. Next.js `NEXT_PUBLIC_` guidance must not be copied into Astro; Astro uses `PUBLIC_`.
+2. Search composition must separate server-side indexing/admin credentials from browser-safe search-only credentials.
+3. Static/content-first projects can preserve availability with a generated public local search index when the product corpus is explicitly public and the remote provider is optional.
+4. Sentry v11 Astro composition has a different integration surface from Next.js. Runtime initialization belongs in Astro client/server config files while build/upload configuration remains in the Astro integration.
+5. Feature-Pack composition can raise the minimum runtime requirement even when the starter itself built on an older Node minor. The pilot must validate the resolved dependency graph, not only the starter's original engine declaration.
+6. Inline Astro browser scripts are part of the type-safety boundary and should pass `astro check` with explicit DOM/data types.
+
+### Not yet verified
+
+This pilot does **not** claim live-provider proof for:
+
+- real Meilisearch remote indexing
+- real Meilisearch browser query delivery using a restricted search-only key
+- real PostHog event ingestion or provider-side consent inspection
+- real Sentry event delivery
+- real Sentry source-map upload/release mapping
+- visual/manual browser inspection across the full RTL verification checklist
+
+Those checks require provider projects, credentials, and/or interactive deployed-browser verification.
+
+### Maturity effect
+
+This adds the first successful `starter-content` composition/build data point.
+
+It also adds another independent code/CI composition data point for `search`, `analytics`, `monitoring`, and `rtl-persian`, while adding Astro-specific evidence for all four.
+
+The evidence is stronger, but the starter itself has only one real composition data point and live-provider proof remains incomplete. No involved component should be promoted from `experimental` to `ready` on this pilot alone.
+
