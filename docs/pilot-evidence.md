@@ -506,7 +506,8 @@ The merged pilot PR passed:
 
 - Pilot PR: `mrst10578/Test-Commerace#1`
 - Pilot merge SHA: `f4b40321d4ab50710cdeb8c458bc5929f04f6c36`
-- CI run: `36533103488`
+- PR CI run: `36533103488`
+- Final `main` CI run: `36533317063`
 
 The successful pipeline covered:
 
